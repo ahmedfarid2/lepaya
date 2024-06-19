@@ -1,9 +1,10 @@
+import 'package:equatable/equatable.dart';
 import 'package:hive/hive.dart';
 
 part 'm_post.g.dart';
 
 @HiveType(typeId: 0)
-class MPost {
+class MPost extends Equatable {
   @HiveField(0)
   final String? after;
   @HiveField(1)
@@ -11,7 +12,7 @@ class MPost {
   @HiveField(2)
   final List<MPostData>? posts;
 
-  MPost({
+  const MPost({
     this.after,
     this.dist,
     this.posts,
@@ -21,14 +22,20 @@ class MPost {
         after: json?['data']?['after'] ?? "",
         dist: json?['data']?['dist'] ?? 0,
         posts: json?['data']?['children'] != null
-            ? List<MPostData>.from(
-                (json?['data']['children'] ?? []).map((post) => MPostData.fromJson(post['data'])))
+            ? List<MPostData>.from((json?['data']['children'] ?? []).map((post) => MPostData.fromJson(post['data'])))
             : [],
       );
+
+  @override
+  List<Object?> get props => [
+    after,
+    dist,
+    posts,
+  ];
 }
 
 @HiveType(typeId: 1)
-class MPostData {
+class MPostData extends Equatable {
   @HiveField(0)
   final String? id;
   @HiveField(1)
@@ -38,7 +45,7 @@ class MPostData {
   @HiveField(3)
   final String? url;
 
-  MPostData({
+  const MPostData({
     this.id,
     this.title,
     this.selfText,
@@ -51,4 +58,12 @@ class MPostData {
         selfText: json?['selftext'] ?? '',
         url: json?['url'] ?? '',
       );
+
+  @override
+  List<Object?> get props => [
+        id,
+        title,
+        selfText,
+        url,
+      ];
 }

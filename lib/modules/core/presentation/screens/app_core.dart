@@ -5,6 +5,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lepaya/core/constants/constants.dart';
 import 'package:lepaya/core/services/routes/app_modular_opserver.dart';
+import 'package:lepaya/core/services/routes/routes_names.dart';
 import 'package:lepaya/core/theme/app_theme.dart';
 import 'package:lepaya/core/utils/enums.dart';
 import 'package:lepaya/core/utils/helpers/error_helper.dart';
@@ -37,7 +38,9 @@ class _AppCoreState extends State<AppCore> {
         onConnectionRestored: () {
           if (Constants.constValues.isNetworkDisconnected) {
             Constants.constValues.isNetworkDisconnected = false;
-            Modular.to.pop();
+            if (Modular.to.path == RoutesNames.connectionError) {
+              Modular.to.pop();
+            }
           }
         },
       );
@@ -59,7 +62,7 @@ class _AppCoreState extends State<AppCore> {
       AppModularObserver(),
     ]);
 
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
   }
 
   @override

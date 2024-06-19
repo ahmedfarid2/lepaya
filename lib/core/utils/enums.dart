@@ -12,3 +12,8 @@ enum ErrorLevels {
   CRITICAL,
 }
 
+enum TabType {
+  New,
+  Hot,
+  Rising,
+}
