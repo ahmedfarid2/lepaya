@@ -20,6 +20,8 @@ dependencies:
   flutter_bloc: ^8.1.3
   bloc: ^8.1.2
   flutter_slidable: ^3.1.0
+  fluttertoast: ^8.2.4
+  animations: ^2.0.11
 
   ###### ================ DATA SOURCE ================= ######
   dio: ^5.4.0
@@ -30,6 +32,7 @@ dependencies:
   url_launcher: ^6.2.3
   package_info_plus: ^5.0.1
   palestine_connection: ^0.0.21
+  equatable: ^2.0.5
 
 dev_dependencies:
   integration_test:
@@ -47,7 +50,7 @@ dev_dependencies:
   flutter_launcher_icons: "^0.13.1"
 
   # -------- Unit Testing ----------#
-  mockito: ^5.4.0
+  mockito: ^5.4.4
   bloc_test: ^9.1.1
 
 flutter_launcher_icons:
